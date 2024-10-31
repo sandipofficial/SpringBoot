@@ -1,19 +1,25 @@
-package com.codingshuttle.springbootwebtutorial.springbootwebtutorial.dto;
+package com.codingshuttle.springbootwebtutorial.springbootwebtutorial.entities;
+
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.time.LocalDate;
 
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDTO {
-
+@Table(name = "Employees")
+public class EmployeeEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String email;
@@ -21,6 +27,4 @@ public class EmployeeDTO {
     private LocalDate dateOfJoining;
     @JsonProperty("isActive")
     private Boolean isActive;
-
-
 }
